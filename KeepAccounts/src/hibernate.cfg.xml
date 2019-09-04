@@ -9,16 +9,24 @@
 		<property name="dialect">
 			org.hibernate.dialect.SQLServerDialect
 		</property>
-		<property name="connection.url">jdbc:sqlserver://DESKTOP-VIF0V2S\SQLEXPRESS:1433;DatabaseName=dp_Booking</property>
+		<property name="connection.url">
+			jdbc:sqlserver://localhost:1433;DatabaseName=KeepAccountsDB
+		</property>
 		<property name="connection.username">sa</property>
 		<property name="connection.password">123456</property>
-		<property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+		<property name="connection.driver_class">
+			com.microsoft.sqlserver.jdbc.SQLServerDriver
+		</property>
 		<property name="myeclipse.connection.profile">
 			FileManagementSystemDB
 		</property>
+		<mapping resource="model/TIncome.hbm.xml" />
+		<mapping resource="model/Tser.hbm.xml" />
+		<mapping resource="model/VUser.hbm.xml" />
+		<mapping resource="model/TExpenditure.hbm.xml" />
 
 
-		
+
 	</session-factory>
 
 </hibernate-configuration>
