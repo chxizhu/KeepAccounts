@@ -15,7 +15,7 @@
 		</primary-key>
 	</table>
 	<table name="T_User" schema="dbo" catalog="KeepAccountsDB"
-		class="model.Tser">
+		class="model.TUser">
 		<primary-key>
 			<generator class="assigned"></generator>
 		</primary-key>

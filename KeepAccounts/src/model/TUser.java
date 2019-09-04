@@ -1,10 +1,10 @@
 package model;
 
 /**
- * Tser entity. @author MyEclipse Persistence Tools
+ * TUser entity. @author MyEclipse Persistence Tools
  */
 
-public class Tser implements java.io.Serializable {
+public class TUser implements java.io.Serializable {
 
 	// Fields
 
@@ -15,11 +15,11 @@ public class Tser implements java.io.Serializable {
 	// Constructors
 
 	/** default constructor */
-	public Tser() {
+	public TUser() {
 	}
 
 	/** full constructor */
-	public Tser(String uid, String uname, Integer password) {
+	public TUser(String uid, String uname, Integer password) {
 		this.uid = uid;
 		this.uname = uname;
 		this.password = password;
