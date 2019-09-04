@@ -20,10 +20,10 @@
 		<property name="myeclipse.connection.profile">
 			FileManagementSystemDB
 		</property>
-		<mapping resource="model/TIncome.hbm.xml" />
 		<mapping resource="model/VUser.hbm.xml" />
 		<mapping resource="model/TExpenditure.hbm.xml" />
 		<mapping resource="model/TUser.hbm.xml" />
+		<mapping resource="model/TIncom.hbm.xml" />
 
 
 

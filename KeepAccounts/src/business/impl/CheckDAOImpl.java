@@ -21,5 +21,12 @@ public class CheckDAOImpl implements CheckDAO {
 		Object[] para = {userid};
 		return bado.select(hql, para);
 	}
+	
+	@Override
+	public int queryCheckCount(String userid) {
+		String hql =  "select count(*) from VUser o where userid = ?  ";
+		Object[] para = {userid};
+		return bado.selectValue(hql, para);
+	}
 
 }

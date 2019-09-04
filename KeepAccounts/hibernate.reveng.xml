@@ -8,20 +8,21 @@
 			<generator class="identity"></generator>
 		</primary-key>
 	</table>
-	<table name="T_Income" schema="dbo" catalog="KeepAccountsDB"
-		class="model.TIncome">
-		<primary-key>
-			<generator class="identity"></generator>
-		</primary-key>
-	</table>
 	<table name="T_User" schema="dbo" catalog="KeepAccountsDB"
 		class="model.TUser">
 		<primary-key>
 			<generator class="assigned"></generator>
 		</primary-key>
 	</table>
-<table name="V_User" schema="dbo" catalog="KeepAccountsDB"
-	class="model.VUser">
+	<table name="V_User" schema="dbo" catalog="KeepAccountsDB"
+		class="model.VUser">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+
+<table name="T_Income" schema="dbo" catalog="KeepAccountsDB"
+	class="model.TIncom">
 	<primary-key>
 		<generator class="identity"></generator>
 	</primary-key>
