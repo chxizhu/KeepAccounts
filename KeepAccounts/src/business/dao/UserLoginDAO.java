@@ -1,3 +1,4 @@
+
 package business.dao;
 
 import model.TUser;
@@ -7,13 +8,13 @@ import model.TUser;
 public interface UserLoginDAO {
 
 	/**
-	 * ÓÃ»§µÇÂ¼ÒµÎñ·½·¨
+	 * ï¿½Ã»ï¿½ï¿½ï¿½Â¼Òµï¿½ñ·½·ï¿½
 	 * 
-	 * @param userid ÓÃ»§µÇÂ¼Ãû
-	 * @param password µÇÂ¼ÃÜÂë
-	 * @return TUser µ±Ç°µÇÂ¼µÄÓÃ»§¶ÔÏó
+	 * @param userid ï¿½Ã»ï¿½ï¿½ï¿½Â¼ï¿½ï¿½
+	 * @param password ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½
+	 * @return TUser ï¿½ï¿½Ç°ï¿½ï¿½Â¼ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
-	public TUser UserLogin(String userid, String password);
+	public TUser UserLogin(String userid, Integer password);
 
 	
 }

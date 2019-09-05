@@ -16,14 +16,14 @@ public class UserLoginDAImpl implements UserLoginDAO {
 	}
 	
 	/**
-	 * ÓÃ»§µÇÂ¼ÒµÎñ·½·¨ 
+	 * ï¿½Ã»ï¿½ï¿½ï¿½Â¼Òµï¿½ñ·½·ï¿½ 
 	 * Parameters: 
-	 * userid ÓÃ»§µÇÂ¼Ãû 
-	 * password µÇÂ¼ÃÜÂë
-	 * TUser  µ±Ç°µÇÂ¼µÄÓÃ»§¶ÔÏó
+	 * userid ï¿½Ã»ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ 
+	 * password ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½
+	 * TUser  ï¿½ï¿½Ç°ï¿½ï¿½Â¼ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	@Override
-	public TUser UserLogin(String userid, String password) {
+	public TUser UserLogin(String userid, Integer password) {
 		String hql = " from TUser where uid = ? and password = ?";
 		Object[] para = { userid, password };
 		List list = bado.select(hql, para);

@@ -16,4 +16,21 @@
     <param-name>contextConfigLocation</param-name>
     <param-value>classpath:applicationContext.xml</param-value>
   </context-param>
+  
+ <!--springmvc的请求分配拦截器-->
+  <servlet>
+      <servlet-name>springmvc</servlet-name>
+      <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+      <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <!-- 请求后的处理规则来自于 springmvc-servlet.xml -->
+            <param-value>classpath:springmvc-servlet.xml</param-value>
+        </init-param>
+       <load-on-startup>1</load-on-startup> 
+  </servlet>
+
+  <servlet-mapping>
+      <servlet-name>springmvc</servlet-name>
+      <url-pattern>/</url-pattern>
+  </servlet-mapping>
 </web-app>
