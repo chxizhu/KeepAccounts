@@ -48,7 +48,7 @@
         <form class="layui-form layui-col-md12 x-so">
         	
    		 <div class="layui-input-inline" >
-      <select name="interest" lay-filter="aihao"  class="layui-input">
+      <select id="moneyType" name="interest" lay-filter="aihao"  class="layui-input">
         <option value="">请选择资金类型</option>
         <option value="0">收入</option>
         <option value="1" >支出</option>       
@@ -57,7 +57,7 @@
          <input type="text" name="starttime" id="starttime" lay-verify="date" placeholder="开始时间" autocomplete="off" class="layui-input">
 	     <input type="text" name="endtime" id="endtime" lay-verify="date" placeholder="结束时间" autocomplete="off" class="layui-input">
           
-          <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+          <button id="queryBill" class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
         </form>
         
         <!-- 表格开始 -->
@@ -93,7 +93,7 @@
 						table.render({
 							elem: '#accounting',
 							id: 'accounting',
-							url: '../editFilecontroller/usereditfile',
+							url: '../accountingmodel/accounting',
 							title: '用户账单',
 							height: "full-160",
 							skin: 'line',
@@ -147,58 +147,54 @@
 						});
 
 						/* 点击查询对网站用户进行筛选 */
-						$("#btnselfrontinfo").click(
+						$("#queryBill").click(
 							function() {
 
-							var selectid = $("#type").val();
-							var method = $("#method").val();
-							var realname = $("#realname").val();
+							var moneyType = $("#moneyType").val();
 							var starttime = $("#starttime").val();
-							var endtime = $("#endtime").val();
+							var endtime = $("#endtime").val();						
 								
-								var parm = '?selectid=' + selectid +'&method=' + method+'&realname=' + realname+'&starttime=' + starttime+'&endtime=' + endtime;
+								var parm = '?moneyType=' + selectid +'&starttime=' + method+'&endtime=' + realname;
 								
 								table.render({
 										elem: '#adminUser',
 										id: 'adminUser',
-										url: '../editFilecontroller/usereditfile' + parm,
+										url: '../accountingmodel/accountingByCondition' + parm,
 										title: '后台用户数据表',
 										height: "full-160",
 										skin: 'line',
 										even: true,
 										cols: [
-											[{
+								[{
 									type: 'numbers',
 									title: '序号',
 									align: 'center',
 									width: 80
 								}, {
-									field: 'filename',
+									field: 'uname',
 									align: 'center',
-									title: '文件名',
+									title: '用户名',
 								}, {
-									field: 'lable',
+									field: 'operation',
 									align: 'center',
-									title: '标签',
+									title: '操作类型',
 								}, {
-									field: 'edit',
-									title: '内容',
+									field: 'category',
+									title: '种类',
 									align: 'center'
 								},{
-									field: 'authorityname',
+									field: 'money',
 									align: 'center',
-									title: '文件权限'
+									title: '金额'
 								}, {
-									field: 'username',
+									field: 'billtime',
 									align: 'center',
-									title: '上传作者'
-								}
-								
-								, {
-									field: 'uptime',
+									title: '操作时间',
+									templet:'<div>{{ layui.util.toDateString(d.billtime, "yyyy-MM-dd") }}</div>'
+								}, {
+									field: 'remark',
 									align: 'center',
-									title: '创建时间',
-									templet:'<div>{{ layui.util.toDateString(d.uptime, "yyyy-MM-dd") }}</div>'
+									title: '备注'
 								}, {
 									title: '操作',
 									toolbar: '#barDemo',
@@ -257,7 +253,7 @@
 					}, function(){
 						$.ajax({
 			        		type: 'get',
-			        		url: "../systemmodel/deleteFile?fileid=" + data.fileid,
+			        		url: "../systemmodel/deleteFile?billid=" + data.billid,
 			        		dataType: 'json',
 			        		success:function(data){
 			        			if(data.code == 0){
