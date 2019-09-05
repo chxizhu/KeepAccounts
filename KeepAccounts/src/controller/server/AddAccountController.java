@@ -2,15 +2,23 @@ package controller.server;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Time;
+import java.sql.Timestamp;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import model.TBill;
+import model.TUser;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import unit.ReturnData;
+import business.dao.AddAccountDAO;
+import business.impl.AddAccountDAOImpl;
 
 import com.alibaba.fastjson.JSON;
 
@@ -22,8 +30,8 @@ public class AddAccountController {
 			@RequestMapping(value = "/addaccount")
 			public void addAccount(
 					String userid, //用户ID
-					String billtime, //操作时间
-					String money, //钱
+					Timestamp billtime, //操作时间
+					Double money, //钱
 					String category, //类别（衣服。。）
 					String operation, //操作类别
 					String remark, //备注						
@@ -31,19 +39,21 @@ public class AddAccountController {
 					HttpServletResponse response,
 					Model model) throws IOException {
 				
-				/*AdminUserDAO adao = new AdminUserDAOImpl();			
-				TAdminUser user = new TAdminUser();
+				AddAccountDAO adao = new AddAccountDAOImpl();			
+				TBill user = new TBill();
 				
-				user.setUserid(userid);
-				user.setMobile(mobile);
-				user.setPwd(pwd);
-				user.setRoleId(roleId);
-				user.setRealname(realname);
-				user.setUserstatus(userstatus);
+				HttpSession  session   =   request.getSession();    
+				TUser TUser = (model.TUser) session.getAttribute("user");
+				
+				user.setUserid(TUser.getUid());
+				user.setBilltime(billtime);
+				user.setMoney(money);
+				user.setCategory(category);
+				user.setOperation(operation);
+				user.setRemark(remark);
 				
 				//添加角色信息
-				int num =adao.addAdminUser(user);
-				
+				int num =adao.addAccount(user);
 				response.setCharacterEncoding("utf-8");
 				response.setContentType("application/json");
 				PrintWriter out = response.getWriter();
@@ -57,9 +67,9 @@ public class AddAccountController {
 				}
 				out.write(JSON.toJSONString(td));
 				out.flush();
-				out.close();*/
+				out.close();
 			}
-		
+			
 			//删除用户
 			/*@RequestMapping(value = "/deleteaccount")
 			public void deleteaccount(

@@ -112,7 +112,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							datatype : 'json',
 							success : function(data) {
 								if (data.code == 0) {
-									window.location.href = "www.baidu.com";
+									window.location.href = "GreetLogin.jsp";
 								} else {
 									layer.alert(data.msg, {icon: 2});
 									layer.close(index);

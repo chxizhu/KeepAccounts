@@ -40,27 +40,34 @@
                   <span class="x-red">*</span>类别
               </label>
               <div class="layui-input-inline">
-                   <select name="interest" lay-filter="aihao"  class="layui-input">
+                   <select name="interest" lay-filter="aihao"  class="layui-input" id="operation">
         <option value="">请选择资金类型</option>
-        <option value="0">收入</option>
-        <option value="1" >支出</option>       
+        <option value="收入">收入</option>
+        <option value="支出" >支出</option>       
       </select>
               </div>
               <label  class="layui-form-label">
                   <span class="x-red">*</span>金额
               </label>
               <div class="layui-input-inline">
-                  <input type="text" id="" name="" required="" 
+                  <input type="text" id="money" name="" required="" 
                   autocomplete="off" class="layui-input">
               </div>
                <label  class="layui-form-label">
                   <span class="x-red">*</span>类型
               </label>
               <div class="layui-input-inline">
-                   <select name="interest" lay-filter="aihao"  class="layui-input">
+                   <select name="interest" lay-filter="aihao"  class="layui-input" id="category">
         <option value="">请选类型</option>
-        <option value="0">收入</option>
-        <option value="1" >支出</option>       
+        <option value="餐饮">餐饮</option>
+        <option value="购物" >购物</option>       
+        <option value="交通">交通</option>
+        <option value="住宿" >住宿</option>
+        <option value="医疗">医疗</option>
+        <option value="旅行" >旅行</option>
+        <option value="学习">学习</option>
+        <option value="通讯" >通讯</option>
+        <option value="其他" >其他</option>
       </select>
               </div>
           </div>                   
@@ -69,7 +76,7 @@
                  备注
               </label>
                <div class="layui-input-inline" style="width: 41.5%;">
-     				 <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+     				 <textarea placeholder="请输入内容" class="layui-textarea" name="remarks" id="remarks"></textarea>
    				 </div>
    				  <label class="layui-form-label">
                   <span class="x-red">*</span>添加时间
@@ -78,7 +85,7 @@
                   <input type="text" placeholder="选择日期" id="time" name="time"
                   autocomplete="off" class="layui-input">
               </div>
-               <button  class="layui-btn" lay-filter="add" style="margin-top: 5%;margin-left: -6.7%;">
+               <button  class="layui-btn" id="addcount-button" lay-filter="add" style="margin-top: 5%;margin-left: -6.7%;">
                   添加
               </button>
    				</div>
@@ -147,3 +154,40 @@
         
       })
 </script>
+<script>
+				layui.use(['form','layer'], function(){
+					var layer = layui.layer
+					var form = layui.form;	  
+					var $ = layui.jquery;
+										
+					/* 点击登录 */
+					$("#addcount-button").click(function(){
+						
+						var operation=$("#operation").val().trim();
+						var time=$("#time").val().trim();
+						var money=$("#money").val().trim();
+						var category=$("#category").val().trim();
+						var remarks=$("#remarks").val().trim();
+				
+				
+						 var index = layer.load(0, {shade: 0.1});
+						$.ajax({
+		 					 url : 'addaccountmodel/addaccount?operation='+operation+'&billtime='+time+'&money='+money+'&category='+category+'&remark='+remarks, 
+							datatype : 'json',
+							success : function(data) {
+								if (data.code == 0) {
+									window.location.href = "login.jsp";
+								} else {
+									layer.alert(/* data.msg */'注册失败!', {icon: 2});
+									layer.close(index);
+									$("input").val("");
+								}
+							},
+							error:function(e){
+			    	        	 layer.alert(e.msg); 	
+								 layer.alert('用户注册失败!', {icon: 2});							 
+			    	        }
+						}); 						
+					});					
+				});
+			</script>

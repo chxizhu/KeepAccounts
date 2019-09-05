@@ -8,6 +8,7 @@
     <class name="model.TBill" table="T_Bill" schema="dbo" catalog="KeepAccountsDB">
             <id name="billid" type="java.lang.Integer">
                 <column name="billid" />
+                <generator class="identity"></generator>
             </id>
             <property name="userid" type="java.lang.String">
                 <column name="userid" length="50" />
