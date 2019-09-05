@@ -2,7 +2,7 @@ package business.dao;
 
 import java.util.List;
 
-import model.VUser;
+import model.VUserBill;
 
 public interface AccountingDAO {
 
@@ -13,7 +13,7 @@ public interface AccountingDAO {
 	 * @param pageSize 按分页查询的每页数量
 	 * @return List<VUser>
 	 */
-	public List<VUser> getAccountList(int currentPage, int pageSize);
+	public List<VUserBill> getAccountList(int currentPage, int pageSize);
 	
 	/**
 	 * 查询所有账单（收入与支出）的数量
@@ -29,7 +29,7 @@ public interface AccountingDAO {
 	 * @param wherecondittion
 	 * @return list
 	 */
-	public List<VUser> getAccountListByCondition(String wherecondition,
+	public List<VUserBill> getAccountListByCondition(String wherecondition,
 			int currentPage, int pageSize);
 
 	/**
@@ -42,7 +42,6 @@ public interface AccountingDAO {
 	
 	/**
 	 * 通过id进行删除账单
-	 * 
 	 * @param int id
 	 * @param
 	 * @return 成功返回0 失败返回1

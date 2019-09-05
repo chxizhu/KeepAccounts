@@ -2,7 +2,6 @@ package business.dao;
 
 import java.util.List;
 import model.TUser;
-import model.VUser;
 
 public interface RegisterDAO {
 	/**

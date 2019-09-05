@@ -105,32 +105,30 @@
 									align: 'center',
 									width: 80
 								}, {
-									field: 'filename',
+									field: 'uname',
 									align: 'center',
-									title: '文件名',
+									title: '用户名',
 								}, {
-									field: 'lable',
+									field: 'operation',
 									align: 'center',
-									title: '标签',
+									title: '操作类型',
 								}, {
-									field: 'edit',
-									title: '内容',
+									field: 'category',
+									title: '种类',
 									align: 'center'
 								},{
-									field: 'authorityname',
+									field: 'money',
 									align: 'center',
-									title: '文件权限'
+									title: '金额'
 								}, {
-									field: 'username',
+									field: 'billtime',
 									align: 'center',
-									title: '上传作者'
-								}
-								
-								, {
-									field: 'uptime',
+									title: '操作时间',
+									templet:'<div>{{ layui.util.toDateString(d.billtime, "yyyy-MM-dd") }}</div>'
+								}, {
+									field: 'remark',
 									align: 'center',
-									title: '创建时间',
-									templet:'<div>{{ layui.util.toDateString(d.uptime, "yyyy-MM-dd") }}</div>'
+									title: '备注'
 								}, {
 									title: '操作',
 									toolbar: '#barDemo',
@@ -266,7 +264,7 @@
 			        				layer.confirm(data.msg, {
 									  btn: ['确定']
 									}, function(){
-										table.reload("adminUser", { //此处是上文提到的 初始化标识id
+										table.reload("accounting", { //此处是上文提到的 初始化标识id
 							                where: {
 							                	keyword:data.code=='0'
 							                }

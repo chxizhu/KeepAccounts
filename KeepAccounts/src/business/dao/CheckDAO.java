@@ -2,20 +2,20 @@ package business.dao;
 
 import java.util.List;
 
-import model.VUser;
+import model.VUserBill;
 
 public interface CheckDAO {
 	
 	/**
-	 * °´ÕÕÊ±¼ä½µĞò²éÑ¯ËùÓĞÕËµ¥ÔÚÊ×Ò³ÏÔÊ¾
-	 * @param String userid µ±Ç°ÓÃ»§
+	 * ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ä½µï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½Ê¾
+	 * @param String userid ï¿½ï¿½Ç°ï¿½Ã»ï¿½
 	 * @return  List<TFile>
 	 */
-	public List<VUser> queryCheck(String userid);
+	public List<VUserBill> queryCheck(String userid);
 	
 	/**
-	 * °´ÕÕÊ±¼ä½µĞò²éÑ¯ËùÓĞÕËµ¥ÔÚÊ×Ò³ÏÔÊ¾×ÜÊı
-	 * @param String userid µ±Ç°ÓÃ»§
+	 * ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ä½µï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
+	 * @param String userid ï¿½ï¿½Ç°ï¿½Ã»ï¿½
 	 * @return  List<TFile>
 	 */
 	public int queryCheckCount(String userid);

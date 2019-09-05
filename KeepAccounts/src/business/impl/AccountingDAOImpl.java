@@ -2,7 +2,8 @@ package business.impl;
 
 import java.util.List;
 
-import model.VUser;
+import model.TBill;
+import model.VUserBill;
 import business.basic.HibernateDAO;
 import business.basic.HibernateDAOimpl;
 import business.dao.AccountingDAO;
@@ -16,34 +17,34 @@ public class AccountingDAOImpl implements AccountingDAO {
 	}
 	
 	@Override
-	public List<VUser> getAccountList(int currentPage, int pageSize) {
-		String hql = "from VUser";
-		List<VUser> list = bado.selectByPage(hql, currentPage, pageSize);
+	public List<VUserBill> getAccountList(int currentPage, int pageSize) {
+		String hql = "from VUserBill";
+		List<VUserBill> list = bado.selectByPage(hql, currentPage, pageSize);
 		return list;
 	}
 
 	@Override
 	public int getAccountListAmount() {
-		String hql = "select count(*) from VUser ";
+		String hql = "select count(*) from VUserBill ";
 		return bado.selectValue(hql);
 	}
 
 	@Override
-	public List<VUser> getAccountListByCondition(String wherecondition,
+	public List<VUserBill> getAccountListByCondition(String wherecondition,
 			int currentPage, int pageSize) {
-		String hql = "from VUser";
+		String hql = "from VUserBill";
 		if (wherecondition != null && !wherecondition.equals("")) {
 			hql += wherecondition;
 			System.out.println(hql);
 		}
-		List<VUser> list = bado.selectByPage(hql, currentPage, pageSize);
+		List<VUserBill> list = bado.selectByPage(hql, currentPage, pageSize);
 
 		return list;
 	}
 
 	@Override
 	public int getAccountListByConditionAmount(String wherecondition) {
-		String hql = "Select count(*) from VUser";
+		String hql = "Select count(*) from VUserBill";
 		  if (wherecondition != null && !wherecondition.equals("")) {
 		   hql += wherecondition;
 		  
@@ -54,8 +55,7 @@ public class AccountingDAOImpl implements AccountingDAO {
 	@Override
 	public boolean deleteAccount(int id) {
 		// TODO Auto-generated method stub
-		//return bado.delete(TFile.class, id);
-		return true;
+		return bado.delete(TBill.class, id);		
 	}
 
 }

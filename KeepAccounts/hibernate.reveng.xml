@@ -21,8 +21,20 @@
 		</primary-key>
 	</table>
 
-<table name="T_Income" schema="dbo" catalog="KeepAccountsDB"
-	class="model.TIncom">
+	<table name="T_Income" schema="dbo" catalog="KeepAccountsDB"
+		class="model.TIncom">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="T_Bill" schema="dbo" catalog="KeepAccountsDB"
+		class="model.TBill">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+<table name="V_UserBill" schema="dbo" catalog="KeepAccountsDB"
+	class="model.VUserBill">
 	<primary-key>
 		<generator class="identity"></generator>
 	</primary-key>

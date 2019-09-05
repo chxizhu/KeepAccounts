@@ -21,10 +21,8 @@
 			FileManagementSystemDB
 		</property>
 		<mapping resource="model/TUser.hbm.xml" />
-		<mapping resource="model/TExpenditure.hbm.xml" />
-		<mapping resource="model/TIncom.hbm.xml" />
-		<mapping resource="model/VUser.hbm.xml" />
-
+		<mapping resource="model/TBill.hbm.xml" />
+		<mapping resource="model/VUserBill.hbm.xml" />
 
 
 	</session-factory>

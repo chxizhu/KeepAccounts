@@ -7,22 +7,10 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-
-
-
-
-import model.VUser;
-
+import model.VUserBill;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-
-
-
-
-
 import unit.ReturnData;
 import business.dao.AccountingDAO;
 import business.impl.AccountingDAOImpl;
@@ -44,7 +32,7 @@ public class AccountingController {
 				Model model) throws IOException {
 						
 			AccountingDAO adao = new AccountingDAOImpl();
-			List<VUser> list = adao.getAccountList(page, limit);
+			List<VUserBill> list = adao.getAccountList(page, limit);
 			
 			int size = adao.getAccountListAmount();
 			
