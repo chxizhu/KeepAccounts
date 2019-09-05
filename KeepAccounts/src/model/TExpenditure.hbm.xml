@@ -22,6 +22,9 @@
         <property name="expenditurecategory" type="java.lang.String">
             <column name="expenditurecategory" length="50" not-null="true" />
         </property>
+        <property name="expenditureoperation" type="java.lang.String">
+            <column name="expenditureoperation" length="50" not-null="true" />
+        </property>
         <property name="expenditureremark" type="java.lang.String">
             <column name="expenditureremark" length="50" />
         </property>

@@ -14,14 +14,16 @@ public class VUser implements java.io.Serializable {
 		private String uid;
 		private String uname;
 		private Integer password;
-		private Timestamp incometime;
-		private Double incomemoney;
-		private String incomecategory;
-		private String incomeremark;
 		private Timestamp expendituretime;
 		private Double expendituremoney;
 		private String expenditurecategory;
+		private String expenditureoperation;
 		private String expenditureremark;
+		private Timestamp incometime;
+		private Double incomemoney;
+		private String incomecategory;
+		private String incomeoperation;
+		private String incomeremark;
 
 		// Constructors
 
@@ -31,38 +33,41 @@ public class VUser implements java.io.Serializable {
 
 		/** minimal constructor */
 		public VUser(String uid, String uname, Integer password,
-				Timestamp incometime, Double incomemoney, String incomecategory,
 				Timestamp expendituretime, Double expendituremoney,
-				String expenditurecategory) {
+				String expenditurecategory, String expenditureoperation,
+				Timestamp incometime, Double incomemoney, String incomecategory) {
 			this.uid = uid;
 			this.uname = uname;
 			this.password = password;
-			this.incometime = incometime;
-			this.incomemoney = incomemoney;
-			this.incomecategory = incomecategory;
 			this.expendituretime = expendituretime;
 			this.expendituremoney = expendituremoney;
 			this.expenditurecategory = expenditurecategory;
+			this.expenditureoperation = expenditureoperation;
+			this.incometime = incometime;
+			this.incomemoney = incomemoney;
+			this.incomecategory = incomecategory;
 		}
 
 		/** full constructor */
 		public VUser(String id, String uid, String uname, Integer password,
-				Timestamp incometime, Double incomemoney, String incomecategory,
-				String incomeremark, Timestamp expendituretime,
-				Double expendituremoney, String expenditurecategory,
-				String expenditureremark) {
+				Timestamp expendituretime, Double expendituremoney,
+				String expenditurecategory, String expenditureoperation,
+				String expenditureremark, Timestamp incometime, Double incomemoney,
+				String incomecategory, String incomeoperation, String incomeremark) {
 			this.id = id;
 			this.uid = uid;
 			this.uname = uname;
 			this.password = password;
-			this.incometime = incometime;
-			this.incomemoney = incomemoney;
-			this.incomecategory = incomecategory;
-			this.incomeremark = incomeremark;
 			this.expendituretime = expendituretime;
 			this.expendituremoney = expendituremoney;
 			this.expenditurecategory = expenditurecategory;
+			this.expenditureoperation = expenditureoperation;
 			this.expenditureremark = expenditureremark;
+			this.incometime = incometime;
+			this.incomemoney = incomemoney;
+			this.incomecategory = incomecategory;
+			this.incomeoperation = incomeoperation;
+			this.incomeremark = incomeremark;
 		}
 
 		// Property accessors
@@ -99,38 +104,6 @@ public class VUser implements java.io.Serializable {
 			this.password = password;
 		}
 
-		public Timestamp getIncometime() {
-			return this.incometime;
-		}
-
-		public void setIncometime(Timestamp incometime) {
-			this.incometime = incometime;
-		}
-
-		public Double getIncomemoney() {
-			return this.incomemoney;
-		}
-
-		public void setIncomemoney(Double incomemoney) {
-			this.incomemoney = incomemoney;
-		}
-
-		public String getIncomecategory() {
-			return this.incomecategory;
-		}
-
-		public void setIncomecategory(String incomecategory) {
-			this.incomecategory = incomecategory;
-		}
-
-		public String getIncomeremark() {
-			return this.incomeremark;
-		}
-
-		public void setIncomeremark(String incomeremark) {
-			this.incomeremark = incomeremark;
-		}
-
 		public Timestamp getExpendituretime() {
 			return this.expendituretime;
 		}
@@ -155,12 +128,60 @@ public class VUser implements java.io.Serializable {
 			this.expenditurecategory = expenditurecategory;
 		}
 
+		public String getExpenditureoperation() {
+			return this.expenditureoperation;
+		}
+
+		public void setExpenditureoperation(String expenditureoperation) {
+			this.expenditureoperation = expenditureoperation;
+		}
+
 		public String getExpenditureremark() {
 			return this.expenditureremark;
 		}
 
 		public void setExpenditureremark(String expenditureremark) {
 			this.expenditureremark = expenditureremark;
+		}
+
+		public Timestamp getIncometime() {
+			return this.incometime;
+		}
+
+		public void setIncometime(Timestamp incometime) {
+			this.incometime = incometime;
+		}
+
+		public Double getIncomemoney() {
+			return this.incomemoney;
+		}
+
+		public void setIncomemoney(Double incomemoney) {
+			this.incomemoney = incomemoney;
+		}
+
+		public String getIncomecategory() {
+			return this.incomecategory;
+		}
+
+		public void setIncomecategory(String incomecategory) {
+			this.incomecategory = incomecategory;
+		}
+
+		public String getIncomeoperation() {
+			return this.incomeoperation;
+		}
+
+		public void setIncomeoperation(String incomeoperation) {
+			this.incomeoperation = incomeoperation;
+		}
+
+		public String getIncomeremark() {
+			return this.incomeremark;
+		}
+
+		public void setIncomeremark(String incomeremark) {
+			this.incomeremark = incomeremark;
 		}
 
 }

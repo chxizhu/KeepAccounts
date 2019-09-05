@@ -15,6 +15,7 @@ public class TExpenditure implements java.io.Serializable {
 	private Timestamp expendituretime;
 	private Double expendituremoney;
 	private String expenditurecategory;
+	private String expenditureoperation;
 	private String expenditureremark;
 
 	// Constructors
@@ -25,21 +26,24 @@ public class TExpenditure implements java.io.Serializable {
 
 	/** minimal constructor */
 	public TExpenditure(String userid, Timestamp expendituretime,
-			Double expendituremoney, String expenditurecategory) {
+			Double expendituremoney, String expenditurecategory,
+			String expenditureoperation) {
 		this.userid = userid;
 		this.expendituretime = expendituretime;
 		this.expendituremoney = expendituremoney;
 		this.expenditurecategory = expenditurecategory;
+		this.expenditureoperation = expenditureoperation;
 	}
 
 	/** full constructor */
 	public TExpenditure(String userid, Timestamp expendituretime,
 			Double expendituremoney, String expenditurecategory,
-			String expenditureremark) {
+			String expenditureoperation, String expenditureremark) {
 		this.userid = userid;
 		this.expendituretime = expendituretime;
 		this.expendituremoney = expendituremoney;
 		this.expenditurecategory = expenditurecategory;
+		this.expenditureoperation = expenditureoperation;
 		this.expenditureremark = expenditureremark;
 	}
 
@@ -83,6 +87,14 @@ public class TExpenditure implements java.io.Serializable {
 
 	public void setExpenditurecategory(String expenditurecategory) {
 		this.expenditurecategory = expenditurecategory;
+	}
+
+	public String getExpenditureoperation() {
+		return this.expenditureoperation;
+	}
+
+	public void setExpenditureoperation(String expenditureoperation) {
+		this.expenditureoperation = expenditureoperation;
 	}
 
 	public String getExpenditureremark() {

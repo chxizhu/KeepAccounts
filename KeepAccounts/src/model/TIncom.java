@@ -15,6 +15,7 @@ public class TIncom implements java.io.Serializable {
 		private Timestamp incometime;
 		private Double incomemoney;
 		private String incomecategory;
+		private String incomeoperation;
 		private String incomeremark;
 
 		// Constructors
@@ -35,12 +36,14 @@ public class TIncom implements java.io.Serializable {
 
 		/** full constructor */
 		public TIncom(Integer incomeid, String userid, Timestamp incometime,
-				Double incomemoney, String incomecategory, String incomeremark) {
+				Double incomemoney, String incomecategory, String incomeoperation,
+				String incomeremark) {
 			this.incomeid = incomeid;
 			this.userid = userid;
 			this.incometime = incometime;
 			this.incomemoney = incomemoney;
 			this.incomecategory = incomecategory;
+			this.incomeoperation = incomeoperation;
 			this.incomeremark = incomeremark;
 		}
 
@@ -86,6 +89,14 @@ public class TIncom implements java.io.Serializable {
 			this.incomecategory = incomecategory;
 		}
 
+		public String getIncomeoperation() {
+			return this.incomeoperation;
+		}
+
+		public void setIncomeoperation(String incomeoperation) {
+			this.incomeoperation = incomeoperation;
+		}
+
 		public String getIncomeremark() {
 			return this.incomeremark;
 		}
@@ -93,5 +104,4 @@ public class TIncom implements java.io.Serializable {
 		public void setIncomeremark(String incomeremark) {
 			this.incomeremark = incomeremark;
 		}
-
 }
