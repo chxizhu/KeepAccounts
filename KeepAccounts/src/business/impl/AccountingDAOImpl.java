@@ -30,26 +30,34 @@ public class AccountingDAOImpl implements AccountingDAO {
 	}
 
 	@Override
-	public List<VUserBill> getAccountListByCondition(String wherecondition,
+	public List<VUserBill> getAccountListByCondition(String userid,String wherecondition,
 			int currentPage, int pageSize) {
+		String sql = " and uid = ? ";
+		Object[] para = {userid};
 		String hql = "from VUserBill";
 		if (wherecondition != null && !wherecondition.equals("")) {
-			hql += wherecondition;
+			hql += ( wherecondition + sql  ) ;
 			System.out.println(hql);
 		}
-		List<VUserBill> list = bado.selectByPage(hql, currentPage, pageSize);
+		/*List<VUserBill> list = bado.selectByPage(hql,para, currentPage, pageSize);
 
-		return list;
+		return list;*/
+		
+		return bado.selectByPage(hql,para, currentPage, pageSize);
+		
+		
 	}
 
 	@Override
-	public int getAccountListByConditionAmount(String wherecondition) {
-		String hql = "Select count(*) from VUserBill";
+	public int getAccountListByConditionAmount(String userid,String wherecondition) {
+		String sql = " and uid = ? ";
+		Object[] para = {userid};
+		String hql = "select count(*) from VUserBill";
 		  if (wherecondition != null && !wherecondition.equals("")) {
-		   hql += wherecondition;
+		   hql += (wherecondition + sql) ;
 		  
 		  }
-		  return  bado.selectValue(hql);
+		  return  bado.selectValue(hql,para);
 	}
 
 	@Override

@@ -52,7 +52,7 @@
         
         <form class="layui-form" action="">
 
-					<div class="layui-inline">
+					<!-- <div class="layui-inline">
 						<select name="type" id="moneyType" lay- filter="type">
 							 <option value="">请选择操作</option>
 		       				 <option value="收入">收入</option>
@@ -73,7 +73,28 @@
 				      </div>
 					<div class="layui-inline">
 						 <button id="queryBill" class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+					</div> -->
+					
+					<div class="layui-input-inline">
+						<select name="type" id="moneyType" lay- filter="type">
+							 <option value="">请选择操作</option>
+		       				 <option value="收入">收入</option>
+        					 <option value="支出" >支出</option>     							
+						</select>
 					</div>
+				
+				<div class="layui-inline"> 
+				  	<input type="text" class="layui-input" name="starttime" id="starttime" placeholder="开始时间"  placeholder="yyyy-MM-dd">
+				</div>
+				 
+				<div class="layui-inline"> 
+				  	<input type="text" class="layui-input" name="endtime" id="endtime" placeholder="结束时间"  placeholder="yyyy-MM-dd">
+				</div>
+					
+				<div class="layui-inline">
+					<button class="layui-btn layui-bg-blue" id="queryBill" >查询</button>
+				</div>
+					
 				</form>
         
         </div>
@@ -182,12 +203,12 @@
 							var starttime = $("#starttime").val();
 							var endtime = $("#endtime").val();						
 								
-								var parm = '?moneyType=' + moneyType +'&starttime=' + starttime+'&endtime=' + realname;
+								var parm = '?moneyType=' + moneyType +'&starttime=' + starttime+'&endtime=' + endtime;
 								
 								table.render({
-										elem: '#adminUser',
+										elem: '#accounting',
 										id: 'accountingID',
-										url: '../accountingmodel/accountingByCondition' + parm,
+										url: 'accountingmodel/accountingByCondition' + parm,
 										title: '后台用户数据表',
 										height: "full-160",
 										skin: 'line',
@@ -249,9 +270,9 @@
 				//表格工具栏事件 
 		    table.on('tool(accounting)', function(obj) {
 			var data = obj.data;
-			$("#txtclaid").text(data.roleid);
+			/* $("#txtclaid").text(data.roleid);
 			$("#txtadminuserrealname").text(data.rolename);
-			$("#txtadminuserusertype").text(data.authorityId);
+			$("#txtadminuserusertype").text(data.authorityId); */
 			
 			
 			switch (obj.event) {

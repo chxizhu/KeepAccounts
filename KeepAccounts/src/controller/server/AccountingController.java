@@ -6,7 +6,10 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import model.TBill;
+import model.TUser;
 import model.VUserBill;
 
 import org.springframework.stereotype.Controller;
@@ -24,7 +27,17 @@ import com.alibaba.fastjson.JSON;
 
 public class AccountingController {
 	
-	 //加载表格
+	/*private String userid;
+	
+	 public String getUserid() {
+		return userid;
+	}
+
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}*/
+
+		//加载表格
 		@RequestMapping(value = "/accounting")
 		public void getAccountingList(
 				int limit,// 总页数
@@ -61,12 +74,19 @@ public class AccountingController {
 		@RequestMapping(value = "/accountingByCondition")
 		public void adduser(int limit,
 				int page, 
+				String userid,
 				String moneyType,//操作类型 
 				String starttime,
 				String endtime,
 				HttpServletRequest request, 
 				HttpServletResponse response,
-				Model model) throws IOException {
+				Model model) throws IOException { 
+			
+			TBill user = new TBill();			
+			HttpSession  session   =   request.getSession();    
+			TUser TUser = (model.TUser) session.getAttribute("user");//得到当前登录用户对象
+			userid = TUser.getUid();
+			System.out.println("Controller的userid为：" + userid);
 			
 			AccountingDAO adao = new AccountingDAOImpl();
 			unit.Expression exp = new unit.Expression();
@@ -81,8 +101,8 @@ public class AccountingController {
 				exp.andAnd(endtime, String.class);
 			}
 
-			List<VUserBill> list = adao.getAccountListByCondition(exp.toString(), page, limit);
-			int num = adao.getAccountListByConditionAmount(exp.toString());
+			List<VUserBill> list = adao.getAccountListByCondition(TUser.getUid(),exp.toString(), page, limit);		
+			int num = adao.getAccountListByConditionAmount(TUser.getUid(),exp.toString());
 			// 回传json字符串
 			response.setCharacterEncoding("utf-8");
 			response.setContentType("application/json");
