@@ -82,9 +82,9 @@
                   <span class="x-red">*</span>添加时间
               </label>
               <div class="layui-input-inline">
-                  <input type="text" placeholder="选择日期" id="time" name="time"
-                  autocomplete="off" class="layui-input">
-              </div>
+                 <input type="text" placeholder="选择日期" id="time" name="time" autocomplete="off" class="layui-input">                                  
+              </div> 
+                                     
                <button  class="layui-btn" id="addcount-button" lay-filter="add" style="margin-top: 5%;margin-left: -6.7%;">
                   添加
               </button>

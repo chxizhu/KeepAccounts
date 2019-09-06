@@ -6,26 +6,26 @@
    <head>  
 	<title>个人记账系统</title>
 	<meta charset="UTF-8">
-	<meta name="renderer" content="webkit|ie-comp|ie-stand">
+	<!-- <meta name="renderer" content="webkit|ie-comp|ie-stand">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
-    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" /> -->
 
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+   <!--  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="./css/font.css">
-	<link rel="stylesheet" href="./css/xadmin.css">
-    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-    <script src="./lib/layui/layui.js" charset="utf-8"></script>
-    <script type="text/javascript" src="./js/xadmin.js"></script>
+	<link rel="stylesheet" href="./css/xadmin.css"> -->
+	
+	<link rel="stylesheet" href="layui/css/layui.css">
+          
   </head>
     <body>
+    
     	<div class="">
     		<ul class="layui-nav layui-bg-orange">
-  <li class="layui-nav-item"><a href="GreetLogin.jsp">首页</a></li>
+  <li class="layui-nav-item"><a href="GreetLogin.html">首页</a></li>
   
-  <li style="margin-left: 80px;"class="layui-nav-item"><a href="Accounting.jsp">记账查询</a></li>
+  <li style="margin-left: 80px;"class="layui-nav-item"><a href="Accounting.html">记账查询</a></li>
   
-  <li style="margin-left: 80px;" class="layui-nav-item"><a href="AddAccount.jsp">添加记账</a></li>
+  <li style="margin-left: 80px;" class="layui-nav-item"><a href="AddAccount.html"></a></li>
   <li style="margin-left:650px" class="layui-nav-item">Nice to meet you：</li>
   <li class="layui-nav-item"><a href="">张遮天</a>
   	 <dl class="layui-nav-child">
@@ -44,32 +44,61 @@
     	<div class="layui-row" style="margin-top: 20px;margin-left: 35%;">
   		<div font style="font-size: 15px;">总支出：<font style="font-size: 20px;" color= "red"> - 200</font></div>
     	</div>
+    	
+    	<div class="layui-container">  
     	<div class="layui-row">
-        <form class="layui-form layui-col-md12 x-so">
-        	
-   		 <div class="layui-input-inline" >
-      <select id="moneyType" name="interest" lay-filter="aihao"  class="layui-input">
-        <option value="">请选择资金类型</option>
-        <option value="0">收入</option>
-        <option value="1" >支出</option>       
-      </select></div>
-   		
-         <input type="text" name="starttime" id="starttime" lay-verify="date" placeholder="开始时间" autocomplete="off" class="layui-input">
-	     <input type="text" name="endtime" id="endtime" lay-verify="date" placeholder="结束时间" autocomplete="off" class="layui-input">
-          
-          <button id="queryBill" class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
-        </form>
+    	 <div class="layui-col-md12">
+    	
         
-        <!-- 表格开始 -->
+        <form class="layui-form" action="">
+
+					<div class="layui-inline">
+						<select name="type" id="moneyType" lay- filter="type">
+							 <option value="">请选择操作</option>
+		       				 <option value="收入">收入</option>
+        					 <option value="支出" >支出</option>     
+							
+						</select>
+					</div>
+				
+				     <div class="layui-input-inline">
+				                   时间：
+				      </div>
+				      <div class="layui-input-inline">
+				            
+				        <input type="text" name="starttime" id="starttime" lay-verify="date" placeholder="开始时间" autocomplete="off" class="layui-input">
+				       </div>
+				       <div class="layui-input-inline">
+				        <input type="text" name="endtime" id="endtime" lay-verify="date" placeholder="结束时间" autocomplete="off" class="layui-input">
+				      </div>
+					<div class="layui-inline">
+						 <button id="queryBill" class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+					</div>
+				</form>
+        
+        </div>
+         </div>
+         </div>
+        
+        
+        	<div class="layui-container">  
+		  <div class="layui-row">
+		    <div class="layui-col-md12">
+		        <!-- 表格开始 -->
 			<table class="layui-hide" name="accounting" id="accounting" lay-filter="accounting"></table>
 			<script type="text/html" id="barDemo">
 			<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 		    </script>
+		    
 			<!-- 表格结束 -->
+    </div>
+  </div>
+  <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+  <script type="text/javascript" src="./js/xadmin.js"></script>
+    <script src="layui/layui.js" charset="utf-8"></script>
+    
         
- 	</body>
-</html>
-<script>
+        <script>
 	layui.use(
 					['table', 'form', 'layer', 'laytpl', 'element','laydate'],
 					function() {
@@ -92,10 +121,9 @@
 						/*加载表格*/
 						table.render({
 							elem: '#accounting',
-							id: 'accounting',
-							url: '../accountingmodel/accounting',
+							id: 'accountingID',
+							url: 'accountingmodel/accounting',
 							title: '用户账单',
-							height: "full-160",
 							skin: 'line',
 							even: true,
 							cols: [
@@ -119,12 +147,12 @@
 								},{
 									field: 'money',
 									align: 'center',
-									title: '金额'
+									title: '金额(单位：元)'
 								}, {
 									field: 'billtime',
 									align: 'center',
 									title: '操作时间',
-									templet:'<div>{{ layui.util.toDateString(d.billtime, "yyyy-MM-dd") }}</div>'
+									templet:'<div>{{ layui.util.toDateString(d.billtime, "yyyy-MM-dd") }}</div>' 
 								}, {
 									field: 'remark',
 									align: 'center',
@@ -154,11 +182,11 @@
 							var starttime = $("#starttime").val();
 							var endtime = $("#endtime").val();						
 								
-								var parm = '?moneyType=' + selectid +'&starttime=' + method+'&endtime=' + realname;
+								var parm = '?moneyType=' + moneyType +'&starttime=' + starttime+'&endtime=' + realname;
 								
 								table.render({
 										elem: '#adminUser',
-										id: 'adminUser',
+										id: 'accountingID',
 										url: '../accountingmodel/accountingByCondition' + parm,
 										title: '后台用户数据表',
 										height: "full-160",
@@ -219,7 +247,7 @@
 							});
 							
 				//表格工具栏事件 
-		    table.on('tool(adminUser)', function(obj) {
+		    table.on('tool(accounting)', function(obj) {
 			var data = obj.data;
 			$("#txtclaid").text(data.roleid);
 			$("#txtadminuserrealname").text(data.rolename);
@@ -253,14 +281,14 @@
 					}, function(){
 						$.ajax({
 			        		type: 'get',
-			        		url: "../systemmodel/deleteFile?billid=" + data.billid,
+			        		url: "accountingmodel/deleteBill?billid=" + data.billid,
 			        		dataType: 'json',
 			        		success:function(data){
 			        			if(data.code == 0){
 			        				layer.confirm(data.msg, {
 									  btn: ['确定']
 									}, function(){
-										table.reload("accounting", { //此处是上文提到的 初始化标识id
+										table.reload("accountingID", { //此处是上文提到的 初始化标识id
 							                where: {
 							                	keyword:data.code=='0'
 							                }
@@ -292,3 +320,5 @@
 
 					});
 		</script>
+ 	</body>
+</html>
