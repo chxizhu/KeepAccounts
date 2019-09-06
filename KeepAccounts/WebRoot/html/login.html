@@ -102,13 +102,13 @@
 						*/
 						 var index = layer.load(0, {shade: 0.1});
 						$.ajax({
-		 					 url : '../Admin/AdminLogin?userid='+username+'&pwd='+password, 
+		 					 url : 'Admin/AdminLogin?userid='+username+'&pwd='+password, 
 							datatype : 'json',
 							success : function(data) {
 								if (data.code == 0) {
-									window.location.href = "../html/index.jsp";
+									window.location.href = "GreetLogin.jsp";
 								} else {
-									layer.alert(/* data.msg */'登录失败!', {icon: 2});
+									layer.alert(data.msg, {icon: 2});
 									layer.close(index);
 									$("input").val("");
 								}

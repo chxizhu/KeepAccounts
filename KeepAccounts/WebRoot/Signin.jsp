@@ -69,7 +69,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										 style=" height: 45px;">
 									</div>
 									<button style="margin-top:15px;margin-bottom: 10px;" type="button" lay-submit id ="login-button" class="layui-btn layui-btn-fluid">注册</button>
-									<p style="margin-bottom: 35px;">已有账号？<a href="login.html" id="forget-pass">直接登录</a></p>
+									<p style="margin-bottom: 35px;">已有账号？<a href="login.jsp" id="forget-pass">直接登录</a></p>
 								</form>
 							</div>
 						</div>

@@ -75,7 +75,8 @@
 			</div>
 					
 			<div class="layui-row">
-				<div class="layui-col-md6">
+			<div class="layui-col-md1">&nbsp;</div>
+				<div class="layui-col-md5">
 					<div id="main" style="width: 400px;height:400px;margin-top: 40px;"></div>
 
 				</div>
