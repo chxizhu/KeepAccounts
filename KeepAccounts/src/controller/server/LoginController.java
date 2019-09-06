@@ -38,7 +38,6 @@ public class LoginController {
 		response.setContentType("application/json");
 		PrintWriter out = response.getWriter();
 		ReturnData td = new ReturnData();
-		System.out.println(userid);
 		if (user != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);

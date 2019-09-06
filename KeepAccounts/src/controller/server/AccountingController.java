@@ -41,15 +41,21 @@ public class AccountingController {
 		@RequestMapping(value = "/accounting")
 		public void getAccountingList(
 				int limit,// 总页数
-				int page,// 每页条目				
+				int page,// 每页条目		
+				String userid,
 				HttpServletRequest request,
 				HttpServletResponse response,
 				Model model) throws IOException {
-						
-			AccountingDAO adao = new AccountingDAOImpl();
-			List<VUserBill> list = adao.getAccountList(page, limit);
 			
-			int size = adao.getAccountListAmount();
+			TBill user = new TBill();			
+			HttpSession  session   =   request.getSession();    
+			TUser TUser = (model.TUser) session.getAttribute("user");//得到当前登录用户对象
+			userid = TUser.getUid();		
+			
+			AccountingDAO adao = new AccountingDAOImpl();
+			List<VUserBill> list = adao.getAccountList(userid,page, limit);
+			
+			int size = adao.getAccountListAmount(userid);
 			
 			// 回传json字符串
 			response.setCharacterEncoding("utf-8");

@@ -91,103 +91,251 @@
    				</div>
              
           </div>
-         
-          
-         
+                       
       </form>
       </div>
-    	
-    	
-    	<div class="layui-row">       
-        <table class="layui-table" style="width: 70%;margin-left:15%;">
-        <thead>
-          <tr>          
-            <th>id</th>
-            <th>类别</th>
-            <th>备注</th>
-            <th>金额</th>
-            <th>类型</th>
-            <th>时间</th>          
-            <th>操作</th>
-        </thead>
-        <tbody>
-          <tr>          
-            <td>1</td>
-            <td>收入</td>
-            <td>买大象</td>
-            <td>250</td>
-            <td>钱多</td>           
-            <td>2017-01-01 11:11:42</td>          
-            <td class="td-manage">             
-              <a title="查看"  onclick="x_admin_show('查看','')" href="javascript:;">
-                <i class="layui-icon">&#xe642;</i>
-              </a>
-               <a title="编辑"  onclick="x_admin_show('编辑','')" href="javascript:;">
-                <i class="layui-icon">&#xe642;</i>
-              </a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="page">
-        <div>
-          <a class="prev" href="">&lt;&lt;</a>
-          <a class="num" href="">1</a>
-          <span class="current">2</span>
-          <a class="num" href="">3</a>
-          <a class="num" href="">489</a>
-          <a class="next" href="">&gt;&gt;</a>
-        </div>
-      </div>
-      </div>
+      
+      <div class="layui-container">  
+		  <div class="layui-row">
+		    <div class="layui-col-md12">
+		        <!-- 表格开始 -->
+			<table class="layui-hide" name="accounting" id="accounting" lay-filter="accounting"></table>
+			<script type="text/html" id="barDemo">
+			<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+		    </script>
+		    
+			<!-- 表格结束 -->
+    </div>
+  </div>
+    	   	
  	</body>
-</html>
-<script>
-	 layui.use('laydate', function(){
-        var laydate = layui.laydate;
+ 	
+ 	<script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+  <script type="text/javascript" src="./js/xadmin.js"></script>
+    <script src="layui/layui.js" charset="utf-8"></script>
+    
         
-        //执行一个laydate实例
-        laydate.render({
-          elem: '#time' //指定元素
-          ,type: 'datetime'
-        });
-        
-      })
-</script>
-<script>
-				layui.use(['form','layer'], function(){
-					var layer = layui.layer
-					var form = layui.form;	  
-					var $ = layui.jquery;
-										
-					/* 点击登录 */
-					$("#addcount-button").click(function(){
+    <script>
+	layui.use(
+					['table', 'form', 'layer', 'laytpl', 'element','laydate'],
+					function() {
+						var table = layui.table,
+							form = layui.form,
+							layer = layui.layer,
+							$ = layui.jquery,
+							element = layui.element;
+						var laydate = layui.laydate;
 						
-						var operation=$("#operation").val().trim();
-						var time=$("#time").val().trim();
-						var money=$("#money").val().trim();
-						var category=$("#category").val().trim();
-						var remarks=$("#remarks").val().trim();
-				
-				
-						 var index = layer.load(0, {shade: 0.1});
-						$.ajax({
-		 					 url : 'addaccountmodel/addaccount?operation='+operation+'&billtime='+time+'&money='+money+'&category='+category+'&remark='+remarks, 
-							datatype : 'json',
-							success : function(data) {
-								if (data.code == 0) {
-									window.location.href = "login.jsp";
-								} else {
-									layer.alert(/* data.msg */'注册失败!', {icon: 2});
-									layer.close(index);
-									$("input").val("");
-								}
+						    //日期选择
+							  laydate.render({
+							    elem: '#starttime'
+							  });
+							  
+							  laydate.render({
+							    elem: '#endtime'
+							  });
+
+						/*加载表格*/
+						table.render({
+							elem: '#accounting',
+							id: 'accountingID',
+							url: 'addaccountmodel/accounting',
+							title: '用户账单',
+							skin: 'line',
+							even: true,
+							cols: [
+								[{
+									type: 'numbers',
+									title: '序号',
+									align: 'center',
+									width: 80
+								}, {
+									field: 'uname',
+									align: 'center',
+									title: '用户名',
+								}, {
+									field: 'operation',
+									align: 'center',
+									title: '操作类型',
+								}, {
+									field: 'category',
+									title: '种类',
+									align: 'center'
+								},{
+									field: 'money',
+									align: 'center',
+									title: '金额(单位：元)'
+								}, {
+									field: 'billtime',
+									align: 'center',
+									title: '操作时间',
+									templet:'<div>{{ layui.util.toDateString(d.billtime, "yyyy-MM-dd") }}</div>' 
+								}, {
+									field: 'remark',
+									align: 'center',
+									title: '备注'
+								}, {
+									title: '操作',
+									toolbar: '#barDemo',
+									align: 'center'
+								}]
+							],
+							page: {
+								layout: ['prev', 'page', 'next', 'skip',
+									'count', 'limit'
+								],
+								groups: 5,
+								limit: 10,
+								limits: [10, 20, 30, 40, 50],
+								theme: '#1E9FFF',
 							},
-							error:function(e){
-			    	        	 layer.alert(e.msg); 	
-								 layer.alert('用户注册失败!', {icon: 2});							 
-			    	        }
-						}); 						
-					});					
-				});
-			</script>
+						});
+
+						/* 点击查询对网站用户进行筛选 */
+						/* $("#queryBill").click(
+							function() {
+
+							var moneyType = $("#moneyType").val();
+							var starttime = $("#starttime").val();
+							var endtime = $("#endtime").val();						
+								
+								var parm = '?moneyType=' + moneyType +'&starttime=' + starttime+'&endtime=' + endtime;
+								
+								table.render({
+										elem: '#accounting',
+										id: 'accountingID',
+										url: 'accountingmodel/accountingByCondition' + parm,
+										title: '后台用户数据表',
+										height: "full-160",
+										skin: 'line',
+										even: true,
+										cols: [
+								[{
+									type: 'numbers',
+									title: '序号',
+									align: 'center',
+									width: 80
+								}, {
+									field: 'uname',
+									align: 'center',
+									title: '用户名',
+								}, {
+									field: 'operation',
+									align: 'center',
+									title: '操作类型',
+								}, {
+									field: 'category',
+									title: '种类',
+									align: 'center'
+								},{
+									field: 'money',
+									align: 'center',
+									title: '金额'
+								}, {
+									field: 'billtime',
+									align: 'center',
+									title: '操作时间',
+									templet:'<div>{{ layui.util.toDateString(d.billtime, "yyyy-MM-dd") }}</div>'
+								}, {
+									field: 'remark',
+									align: 'center',
+									title: '备注'
+								}, {
+									title: '操作',
+									toolbar: '#barDemo',
+									align: 'center'
+								}]
+										],
+										page: {
+											layout: ['prev',
+												'page', 'next',
+												'skip',
+												'count',
+												'limit'
+											],
+											groups: 5,
+											limit: 10,
+											limits: [10, 20, 30,
+												40, 50
+											],
+											theme: '#1E9FFF',
+										},
+									});
+							}); */
+							
+				//表格工具栏事件 
+		    table.on('tool(accounting)', function(obj) {
+			var data = obj.data;
+			/* $("#txtclaid").text(data.roleid);
+			$("#txtadminuserrealname").text(data.rolename);
+			$("#txtadminuserusertype").text(data.authorityId); */
+			
+			
+			switch (obj.event) {
+				case 'seluser':
+					layer.open({
+				        type: 1, 
+				        title: '管理员信息详情',
+				        area: ['600px', '430px'],
+				        shade: 0.8,
+				        content: $('#adminuserdetail'),
+				        btn: ['返回'], 
+				        yes: function(){
+				          layer.closeAll();
+				          $(".adminuserdetail").css("display","none");
+				        },
+				        cancel: function(){ 
+						  $(".adminuserdetail").css("display","none");
+						}
+				    });
+				break;
+				
+				//删除按钮操作
+				case 'del':
+					layer.confirm('确定要删除么？', {
+					  btn: ['确定','取消'],
+					  icon:3
+					}, function(){
+						$.ajax({
+			        		type: 'get',
+			        		url: "addaccountmodel/deleteBill?billid=" + data.billid,
+			        		dataType: 'json',
+			        		success:function(data){
+			        			if(data.code == 0){
+			        				layer.confirm(data.msg, {
+									  btn: ['确定']
+									}, function(){
+										table.reload("accountingID", { //此处是上文提到的 初始化标识id
+							                where: {
+							                	keyword:data.code=='0'
+							                }
+							            });	
+										layer.closeAll();
+									});          				 
+			        			}
+			        			else{
+			        				layer.confirm(data.msg, {
+										  btn: ['确定']
+									});
+			        			}
+			        		},
+			        		error:function(){
+			        			layer.confirm('出现错误，删除失败，请重试！', {
+									  btn: ['确定']
+								});
+			        		},
+			        	});   
+					}, function(){ 
+						layer.closeAll();
+					});
+				break;
+				
+			}
+			;
+		});
+							
+
+					});
+		</script>
+ 	
+</html>
