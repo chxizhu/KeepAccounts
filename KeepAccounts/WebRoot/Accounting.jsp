@@ -214,27 +214,19 @@
 								$("#queryBill")
 										.click(
 												function() {
+		                                               
+													var moneyType = $("#moneyType").val();
+													var starttime = $("#starttime").val();
+													var endtime = $("#endtime").val();	
+													 var userid = ${user.uid };										
 
-													var moneyType = $(
-															"#moneyType").val();
-													var starttime = $(
-															"#starttime").val();
-													var endtime = $("#endtime")
-															.val();
-
-													var parm = '?moneyType='
-															+ moneyType
-															+ '&starttime='
-															+ starttime
-															+ '&endtime='
-															+ endtime;
-
+													/* var parm = '?moneyType='+ moneyType + '&starttime=' + starttime + '&endtime=' + endtime; */ 	
+													var parm = '?moneyType='+ moneyType + '&starttime=' + starttime + '&endtime=' + endtime+ '&userid=' + userid; 																					
 													table
 															.render({
 																elem : '#accounting',
 																id : 'accountingID',
-																url : 'accountingmodel/accountingByCondition'
-																		+ parm,
+																url : 'accountingmodel/accountingByCondition' + parm,
 																title : '后台用户数据表',
 																height : "full-160",
 																skin : 'line',
