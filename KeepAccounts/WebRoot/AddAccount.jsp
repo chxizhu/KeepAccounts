@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <html>
    <head>  
@@ -17,21 +18,23 @@
     <script type="text/javascript" src="./js/xadmin.js"></script>
   </head>
     <body>
-    	<div class="">
+    	<div id="layerDemo" class="">
     		<ul class="layui-nav layui-bg-orange">
   <li class="layui-nav-item"><a href="GreetLogin.jsp">首页</a></li>
   
   <li style="margin-left: 80px;"class="layui-nav-item"><a href="Accounting.jsp">记账查询</a></li>
   
   <!-- <li style="margin-left: 80px;" class="layui-nav-item"><a href="AddAccount.jsp">添加记账</a></li> -->
-  <li style="margin-left:650px" class="layui-nav-item">Nice to meet you：</li>
-  <li class="layui-nav-item"><a href="">张遮天</a>
+  <li style="margin-left:650px" class="layui-nav-item">欢迎您：</li>
+  <li class="layui-nav-item"><a href="javascript:;">${user.uname }</a>
   	 <dl class="layui-nav-child">
       <dd><a href="javascript:;">修改信息</a></dd>  
-      <dd><a href="javascript:;">退出</a></dd>
+      <!-- <dd><a href="javascript:;">退出</a></dd> -->
     </dl>
   </li>
-</ul>	
+			<li class="layui-nav-item "><button data-method="confirmTrans"
+					class="layui-btn layui-btn-warm">退出</button></li>
+		</ul>	
     	</div>
     	<div class="layui-row" style="margin-top: 20px;margin-left: 12%;">
     	<form class="layui-form">
@@ -337,5 +340,32 @@
 
 					});
 		</script>
+		
+		<!-- 退出按钮 -->
+		<script>
+		layui.use('layer', function() { //独立版的layer无需执行这一句
+			var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
+			//触发事件
+			var active = {
+				confirmTrans : function() {
+					//配置一个透明的询问框
+					layer.msg('确定要退出嘛？', {
+						time : 20000, //20s后自动关闭
+						btn : [ '确定', '取消' ],
+						yes : function(index, layero) { // 默认的是 按钮一
+							sessionStorage.clear()
+							window.location.reload()
+							window.location.href = "login.jsp"
+						}
+					});
+				}
+			};
+
+			$('#layerDemo .layui-btn').on('click', function() {
+				var othis = $(this), method = othis.data('method');
+				active[method] ? active[method].call(this, othis) : '';
+			});
+		});
+	</script>
  	
 </html>
