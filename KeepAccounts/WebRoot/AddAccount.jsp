@@ -23,7 +23,7 @@
   
   <li style="margin-left: 80px;"class="layui-nav-item"><a href="Accounting.jsp">记账查询</a></li>
   
-  <li style="margin-left: 80px;" class="layui-nav-item"><a href="AddAccount.jsp">添加记账</a></li>
+  <!-- <li style="margin-left: 80px;" class="layui-nav-item"><a href="AddAccount.jsp">添加记账</a></li> -->
   <li style="margin-left:650px" class="layui-nav-item">Nice to meet you：</li>
   <li class="layui-nav-item"><a href="">张遮天</a>
   	 <dl class="layui-nav-child">
