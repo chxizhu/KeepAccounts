@@ -21,6 +21,7 @@ public class AccountingDAOImpl implements AccountingDAO {
 		String hql = "from VUserBill where uid = ? order by billtime desc";
 		Object[] para = {userid};
 		List<VUserBill> list = bado.selectByPage(hql,para, currentPage, pageSize);
+		System.out.println(hql);
 		return list;
 	}
 
@@ -31,23 +32,49 @@ public class AccountingDAOImpl implements AccountingDAO {
 		return bado.selectValue(hql,para);
 	}
 
-	@Override
+	
+	/*@Override
 	public List<VUserBill> getAccountListByCondition(String userid,String wherecondition,
 			int currentPage, int pageSize) {
 		String sql = " and uid = ? order by billtime desc";
+		String hql = "from VUserBill";
 		Object[] para = {userid};
+		if (wherecondition != null && !wherecondition.equals("")) {
+			hql += ( wherecondition + sql  ) ;
+			System.out.println(hql);
+		}
+
+		return bado.selectByPage(hql,para, currentPage, pageSize);			
+				
+	}*/
+	
+	/*@Override
+	public List<VUserBill> getAccountListByCondition(String wherecondition,
+			int currentPage, int pageSize) {
+		String sql = " order by billtime desc";
 		String hql = "from VUserBill";
 		if (wherecondition != null && !wherecondition.equals("")) {
 			hql += ( wherecondition + sql  ) ;
 			System.out.println(hql);
 		}
-		/*List<VUserBill> list = bado.selectByPage(hql,para, currentPage, pageSize);
 
-		return list;*/
-		
-		return bado.selectByPage(hql,para, currentPage, pageSize);
-		
-		
+		return bado.selectByPage(hql, currentPage, pageSize);			
+				
+	}*/
+	
+	@Override
+	public List<VUserBill> getAccountListByCondition(String userid,String wherecondition,
+			int currentPage, int pageSize) {
+		String sql = "and uid = ? order by billtime desc";
+		String hql = "from VUserBill";
+		Object[] para = {userid};
+		if (wherecondition != null && !wherecondition.equals("")) {
+			hql += ( wherecondition + sql  ) ;
+			System.out.println(hql);
+		}
+
+		return bado.selectByPage(hql,para,currentPage, pageSize);			
+				
 	}
 
 	@Override

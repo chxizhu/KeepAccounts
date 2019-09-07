@@ -46,6 +46,7 @@ public class AccountingController {
 				HttpServletRequest request,
 				HttpServletResponse response,
 				Model model) throws IOException {
+						
 			
 			TBill user = new TBill();			
 			HttpSession  session   =   request.getSession();    
@@ -81,22 +82,26 @@ public class AccountingController {
 		public void adduser(int limit,
 				int page, 
 				String userid,
-				String moneyType,//操作类型 
+				/*String moneyType,//操作类型 
 				String starttime,
-				String endtime,
+				String endtime,*/
 				HttpServletRequest request, 
 				HttpServletResponse response,
 				Model model) throws IOException { 
+			
+			String moneyType = request.getParameter("moneyType");//得到搜索框中的内容,文件标题
+			String starttime = request.getParameter("starttime");//得到搜索框中的内容,文件标题
+			String endtime = request.getParameter("endtime");//得到搜索框中的内容,文件标题
 			
 			TBill user = new TBill();			
 			HttpSession  session   =   request.getSession();    
 			TUser TUser = (model.TUser) session.getAttribute("user");//得到当前登录用户对象
 			userid = TUser.getUid();
-			System.out.println("Controller的userid为：" + userid);
+			/*System.out.println("Controller的userid为：" + userid);*/
 			
 			AccountingDAO adao = new AccountingDAOImpl();
 			unit.Expression exp = new unit.Expression();
-			// 根据条件获取模糊查询
+			// 根据条件获取模糊查询			
 			if (moneyType != null && !moneyType.equals("")) {
 				exp.andLike("operation", moneyType, String.class);
 			}
@@ -107,8 +112,16 @@ public class AccountingController {
 				exp.andAnd(endtime, String.class);
 			}
 
+			/*List<VUserBill> list = adao.getAccountListByCondition(TUser.getUid(),exp.toString(), page, limit);		
+			int num = adao.getAccountListByConditionAmount(TUser.getUid(),exp.toString());*/
+			
+			/*List<VUserBill> list = adao.getAccountListByCondition(userid,exp.toString(), page, limit);		
+			int num = adao.getAccountListByConditionAmount(userid,exp.toString());*/
+			
 			List<VUserBill> list = adao.getAccountListByCondition(TUser.getUid(),exp.toString(), page, limit);		
 			int num = adao.getAccountListByConditionAmount(TUser.getUid(),exp.toString());
+			
+			System.out.println("直接获取Controller的userid为：" + userid);
 			// 回传json字符串
 			response.setCharacterEncoding("utf-8");
 			response.setContentType("application/json");
