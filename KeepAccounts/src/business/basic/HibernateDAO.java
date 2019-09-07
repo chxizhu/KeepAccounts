@@ -223,6 +223,14 @@ import org.hibernate.sql.Insert;
 	
 	public boolean executeBatch(List<Object> list,List<Integer> models);
 	
+	/**
+	 * 执行原生的SQL查询
+	 * 返回list
+	 * 
+	 * 
+	 */
+	public List selectsql(String sql, Object[] para);
+	
 	
 }
 
