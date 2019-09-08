@@ -12,7 +12,7 @@ public interface GreetLoginDAO {
 	 * @param  TBill tb
 	 * @return  List<TFile>
 	 */
-	public float income(TBill tb);
+	public List income(TBill tb);
 	
 	/**
 	 * 用户支出查询

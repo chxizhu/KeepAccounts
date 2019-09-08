@@ -9,6 +9,7 @@ import java.util.List;
 
 
 
+
 /*import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;*/
 import org.hibernate.Query;
@@ -625,7 +626,7 @@ public class HibernateDAOimpl implements HibernateDAO {
 		}
 		
 		@Override
-		public List selectsql(String sql, Object[] para) {
+		public List selectsqlobj(String sql, Object[] para) {
 		Session session = HibernateSessionFactory.getSession();
 		  Transaction tx = null;
 		  try {
@@ -644,6 +645,28 @@ public class HibernateDAOimpl implements HibernateDAO {
 		    session.close();
 		   return null;
 		  }
+		}
+
+		@Override
+		public List selectsql(String sql, Object[] para) {
+			Session session = HibernateSessionFactory.getSession();
+			  Transaction tx = null;
+			  try {
+			   tx = session.beginTransaction(); // 开启一个事务
+			   SQLQuery query = session.createSQLQuery(sql);
+			   for (int i = 0; i < para.length; i++) {
+			    query.setParameter(i, para[i]);
+			   }
+			   List list =query.list();
+			   return list;
+			  } catch (Exception e) {
+			   e.printStackTrace();
+			   if (tx != null)
+			    tx.rollback(); // 撤销
+			   if (session != null)
+			    session.close();
+			   return null;
+			  }
 		}
 		
 		

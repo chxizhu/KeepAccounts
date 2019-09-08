@@ -50,7 +50,7 @@
 							<div class="layui-card-body">
 								<br>
 								<font style="font-size: 20px;" color="lawngreen">
-									+500</font>
+									<%=request.getSession().getAttribute("num") %></font>
 
 							</div>
 						</div>

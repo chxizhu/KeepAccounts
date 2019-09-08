@@ -231,6 +231,14 @@ import org.hibernate.sql.Insert;
 	 */
 	public List selectsql(String sql, Object[] para);
 	
+	/**
+	 * 执行原生的SQL查询
+	 * 返回selectsqlobj
+	 * 
+	 * 
+	 */
+	public List selectsqlobj(String sql, Object[] para);
+	
 	
 }
 

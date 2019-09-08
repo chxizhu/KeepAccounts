@@ -1,5 +1,6 @@
 package business.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import model.TBill;
@@ -18,12 +19,13 @@ public class GreetLoginDAOimpl implements GreetLoginDAO {
 	}
 
 	@Override
-	public float income(TBill tb) {
+	public List income(TBill tb) {
 		String hql = " select  SUM(money)  from T_Bill where  userid = ? AND operation =?";
-		Object para[]={tb.getUserid(),"收入"};
+		Object para[]={tb.getUserid(),tb.getOperation()};
 		/*System.out.println(hql+para);*/
-		float num = bado.selectValue(hql, para);
-		return num;
+	       Object num = bado.selectsqlobj(hql, para);
+	
+		return (List) num;
 	}
 
 	@Override
