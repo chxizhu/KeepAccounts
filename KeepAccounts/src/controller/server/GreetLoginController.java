@@ -172,9 +172,19 @@ public class GreetLoginController {
 		tb.setUserid(TUser.getUid());
 		tb.setOperation("收入");
 		
+		
+		
 		List num =    adao.income(tb);
 		Object element =  num.get(0);
 		session.setAttribute("num", element);
+		
+		TBill tb1 = new TBill();
+		tb1.setUserid(TUser.getUid());
+		tb1.setOperation("支出");
+		List num1 =    adao.income(tb1);
+		Object element1 =  num1.get(0);
+		session.setAttribute("num1", element1);
+		
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("application/json");
 		PrintWriter out = response.getWriter();

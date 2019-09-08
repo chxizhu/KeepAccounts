@@ -50,7 +50,7 @@
 							<div class="layui-card-body">
 								<br>
 								<font style="font-size: 20px;" color="lawngreen">
-									<%=request.getSession().getAttribute("num") %></font>
+									+<%=request.getSession().getAttribute("num") %></font>
 
 							</div>
 						</div>
@@ -62,7 +62,7 @@
 							<div class="layui-card-body">
 								<br>
 								<font style="font-size: 20px;" color="red">
-									-1000</font>
+									-<%=request.getSession().getAttribute("num1") %></font>
 							</div>
 						</div>
 					</div>
@@ -93,24 +93,12 @@
 				<!-- 页面底部 -->
 				<p style="font-size: 15px;color: #c2c2c2;margin-top: 25px;text-align:center;margin-bottom: 50px;">©
 					2019 云南工商学院&nbsp;计算机科学与技术</p>
+					
 
-				<script>
-					layui.use('laydate', function() {
-						var laydate = layui.laydate;
-
-						//执行一个laydate实例
-						laydate.render({
-							elem: '#time' //指定元素
-								,
-							type: 'datetime'
-						});
-
-					})
-				</script>
+				
 				<script>
 					// 基于准备好的dom，初始化echarts实例
-					var myChart1 = echarts.init(document.getElementById('main'),
-						'light');
+					var myChart1 = echarts.init(document.getElementById('main'),'light');
 					$.ajax({
 						url: 'controller/selectincome',
 						type: 'post',
@@ -279,15 +267,13 @@
 					});
 					
 					/*退出系统*/
-	$("#loginout").click(function(){
-	/* window.location.href = "../html/login.jsp" */
-		$.ajax({
+			$("#loginout").click(function(){
+				/* window.location.href = "../html/login.jsp" */
+			$.ajax({
 			type: 'get',
 			url: 'sysadminusermanager/logoutsystem',
 			datatype: 'json',
 			success: function(data) {
-				
-					
 					layer.msg('确定要退出嘛？', {
 				        time: 20000, //20s后自动关闭
 				        btn: ['确定', '取消'],
@@ -296,10 +282,10 @@
 				          window.location.href = "login.jsp"
 				         }
 				      });
-			},
-			error: function() {}
-		});
-	});
+				},
+					error: function() {}
+				});
+				});
 				</script>
 	</body>
 </html>
