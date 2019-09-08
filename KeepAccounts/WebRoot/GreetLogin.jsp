@@ -26,7 +26,7 @@
 				<li style="margin-left: 80px;" class="layui-nav-item"><a href="Accounting.jsp">记账查询</a></li>
 				<li style="margin-left: 80px;" class="layui-nav-item"><a href="AddAccount.jsp">添加记账</a></li>
 				<li style="margin-left:650px" class="layui-nav-item">欢迎您：</li>
-				<li class="layui-nav-item"><a href=""><%=request.getSession().getAttribute("username") %></a>
+				<li class="layui-nav-item"><a href="javascript:"><%=request.getSession().getAttribute("username") %></a>
 					<dl class="layui-nav-child">
 						<dd>
 							<a href="">修改信息</a>
@@ -49,8 +49,8 @@
 
 							<div class="layui-card-body">
 								<br>
-								<font style="font-size: 20px;" color="lawngreen">
-									+<%=request.getSession().getAttribute("num") %></font>
+								<font id="bqFY" style="font-size: 20px;" color="lawngreen">
+									</font>
 
 							</div>
 						</div>
@@ -61,8 +61,8 @@
 
 							<div class="layui-card-body">
 								<br>
-								<font style="font-size: 20px;" color="red">
-									-<%=request.getSession().getAttribute("num1") %></font>
+								<font id="bqOut" style="font-size: 20px;" color="red">
+									</font>
 							</div>
 						</div>
 					</div>
@@ -72,8 +72,8 @@
 
 							<div class="layui-card-body">
 								<br>
-								<font style="font-size: 20px;" color="lawngreen">
-									+500</font>
+								<font id="bqbalance" style="font-size: 20px;" color="lawngreen">
+									</font>
 							</div>
 						</div>
 					</div>
@@ -95,6 +95,25 @@
 					2019 云南工商学院&nbsp;计算机科学与技术</p>
 					
 
+				<script type="text/javascript">
+							$(function(){
+									    $.ajax({url:"controller/selecFY",
+									    success:function(result){
+									    $("#bqFY").html("+"+result)
+									    
+									    $(function(){
+									    $.ajax({url:"controller/selecFY1",
+									    success:function(result1){
+									    $("#bqOut").html("-"+result1)
+									    $("#bqbalance").html(result-result1)
+									        
+									    }});
+									});
+									        
+									    }});
+									});
+				
+				</script>
 				
 				<script>
 					// 基于准备好的dom，初始化echarts实例

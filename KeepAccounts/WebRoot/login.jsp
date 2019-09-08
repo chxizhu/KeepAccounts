@@ -112,12 +112,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							datatype : 'json',
 							success : function(data) {
 								if (data.code == 0) {
-								$(function(){
+								/* $(function(){
 									    $.ajax({url:"controller/selecFY",
 									    success:function(result){
 									        
 									    }});
-									});
+									}); */
 									window.location.href = "GreetLogin.jsp";
 									
 								} else {
