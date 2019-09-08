@@ -333,6 +333,7 @@ public class HibernateDAOimpl implements HibernateDAO {
 				// 根据para设置参数
 				for (int i = 0; i < para.length; i++) {
 					query.setParameter(i, para[i]);
+					
 				}
 				List list = query.list();
 				// 获得查询记录总数

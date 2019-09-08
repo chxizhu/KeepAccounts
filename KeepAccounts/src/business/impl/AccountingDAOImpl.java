@@ -39,7 +39,7 @@ public class AccountingDAOImpl implements AccountingDAO {
 		String hql = "from VUserBill";
 		if (wherecondition != null && !wherecondition.equals("")) {
 			hql += ( wherecondition + sql  ) ;
-			System.out.println(hql);
+			
 		}		
 		return bado.selectByPage(hql,para, currentPage, pageSize);
 		

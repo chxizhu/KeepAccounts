@@ -51,9 +51,7 @@ public class loginOutcontroller {
 			td.code = ReturnData.ERROR;
 			td.msg = "退出失败";
 		}
-		out.write(JSON.toJSONString(td));
-		System.out.println(JSON.toJSONString(td));
-		// {"code":10001,"msg":"执行成功","result1":"......."}
+		out.write(JSON.toJSONString(td));		
 		out.flush();
 		out.close();
 

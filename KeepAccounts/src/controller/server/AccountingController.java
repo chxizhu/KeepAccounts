@@ -91,9 +91,7 @@ public class AccountingController {
 			TBill user = new TBill();			
 			HttpSession  session   =   request.getSession();    
 			TUser TUser = (model.TUser) session.getAttribute("user");//得到当前登录用户对象
-			userid = TUser.getUid();
-			
-			System.out.println("Controller的userid为：" + userid);
+			userid = TUser.getUid();		
 			
 			AccountingDAO adao = new AccountingDAOImpl();
 			unit.Expression exp = new unit.Expression();
@@ -119,7 +117,7 @@ public class AccountingController {
 			rj.msg = "执行成功";
 			rj.data = list;
 			rj.count = num;
-			out.write(JSON.toJSONString(rj));
+			out.write(JSON.toJSONString(rj));		
 			out.flush();
 			out.close();
 

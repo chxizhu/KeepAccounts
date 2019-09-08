@@ -16,6 +16,12 @@
 	
 	<link rel="stylesheet" href="layui/css/layui.css">
           
+          <style type="text/css">
+          .querybtn{
+          	margin-top:-38px;
+          	margin-left:600px;
+          }
+          </style>
   </head>
     <body>
     
@@ -90,12 +96,13 @@
 				       <div class="layui-input-inline">
 				        <input type="text" name="endtime" id="endtime" lay-verify="date" placeholder="结束时间" autocomplete="off" class="layui-input">
 				      </div>
+				      </form>
 					
 				<div class="layui-inline">
-					<button class="layui-btn layui-bg-blue" id="queryBill" >查询</button>
+					<button class="layui-btn layui-bg-blue querybtn" id="queryBill" >查询</button>
 				</div>
 					
-				</form>
+				
         
         </div>
          </div>
@@ -233,9 +240,8 @@
 								table.render({
 										elem: '#accounting',
 										id: 'accountingID',
-										url: 'accountingmodel/accountingByCondition' + parm,
-										title: '后台用户数据表',
-										height: "full-160",
+										url: 'accountingmodel/accountingByCondition' + parm ,
+										title: '后台用户数据表',										
 										skin: 'line',
 										even: true,
 										cols: [
