@@ -7,7 +7,7 @@
 
 	<session-factory>
 		<property name="dialect">org.hibernate.dialect.SQLServerDialect</property>
-		<property name="connection.url">jdbc:sqlserver://PC-SLRO68M:1433;DataBaseName=KeepAccountsDB</property>
+		<property name="connection.url">jdbc:sqlserver://localhost:1433;DataBaseName=KeepAccountsDB</property>
 		<property name="connection.username">sa</property>
 		<property name="connection.password">123456</property>
 		<property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>

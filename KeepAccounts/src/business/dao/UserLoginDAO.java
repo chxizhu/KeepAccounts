@@ -8,11 +8,11 @@ import model.TUser;
 public interface UserLoginDAO {
 
 	/**
-	 * �û���¼ҵ�񷽷�
+	 *用户登录
 	 * 
-	 * @param userid �û���¼��
-	 * @param password ��¼����
-	 * @return TUser ��ǰ��¼���û�����
+	 * @param userid 
+	 * @param password 
+	 * @return TUser 
 	 */
 	public TUser UserLogin(String userid, Integer password);
 

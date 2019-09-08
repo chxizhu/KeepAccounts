@@ -25,9 +25,9 @@
   
   <li style="margin-left: 80px;" class="layui-nav-item"><a href="AddAccount.jsp">添加记账</a></li>
   <li style="margin-left:650px" class="layui-nav-item">欢迎您：</li>
-  <li class="layui-nav-item"><a href=""><%=request.getSession().getAttribute("username") %></a>
+  <li class="layui-nav-item"><a href="javascript:;"><%=request.getSession().getAttribute("username") %></a>
   	 <dl class="layui-nav-child">
-      <dd><a href="javascript:;">修改信息</a></dd>  
+      <dd><a href="UserInformationEdit.jsp">修改信息</a></dd>  
       <dd><a id="loginout" class="loginout" href="javascript:" >退出</a></dd>
     </dl>
   </li>
