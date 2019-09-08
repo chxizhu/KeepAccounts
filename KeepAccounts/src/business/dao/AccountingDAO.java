@@ -7,7 +7,7 @@ import model.VUserBill;
 public interface AccountingDAO {
 
 	/**
-	 * 查询个人所有账单（收入与支出）
+	 * 查询所有账单（收入与支出）
 	 * @param userid当前登录用户ID
 	 * @param currentPage 按分页查询的当前页
 	 * @param pageSize 按分页查询的每页数量
@@ -29,11 +29,6 @@ public interface AccountingDAO {
 	 * @param wherecondittion 条件
 	 * @return list
 	 */
-	/*public List<VUserBill> getAccountListByCondition(String userid,String wherecondition,
-			int currentPage, int pageSize);*/
-	/*public List<VUserBill> getAccountListByCondition(String wherecondition,
-			int currentPage, int pageSize);*/
-	
 	public List<VUserBill> getAccountListByCondition(String userid,String wherecondition,
 			int currentPage, int pageSize);
 

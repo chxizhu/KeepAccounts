@@ -3,6 +3,7 @@ package business.dao;
 import java.util.List;
 
 import model.TBill;
+import model.T_charts;
 
 
 public interface GreetLoginDAO {
@@ -25,5 +26,5 @@ public interface GreetLoginDAO {
 	 * @param  TBill tb
 	 * @return  List<TFile>
 	 */
-	public List selectincome(TBill tb);
+	public List<T_charts> selectincome(TBill tb);
 }

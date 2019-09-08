@@ -21,7 +21,7 @@ public class GreetLoginDAOimpl implements GreetLoginDAO {
 	public float income(TBill tb) {
 		String hql = " select  SUM(money)  from T_Bill where  userid = ? AND operation =?";
 		Object para[]={tb.getUserid(),"收入"};
-		System.out.println(hql+para);
+		/*System.out.println(hql+para);*/
 		float num = bado.selectValue(hql, para);
 		return num;
 	}
@@ -33,10 +33,10 @@ public class GreetLoginDAOimpl implements GreetLoginDAO {
 	}
 
 	@Override
-	public List selectincome(TBill tb) {
+	public List<T_charts> selectincome(TBill tb) {
 		String sql = " Select  category,SUM(money)  AS money from T_Bill WHERE userid =? AND  operation =?  GROUP BY category ";
 		Object para[]={tb.getUserid(),tb.getOperation()};
-		System.out.println(sql+para);
+		/*System.out.println(sql+para);*/
 		 List<T_charts> list =  bado.selectsql(sql, para);
 		 return  list;
 		 

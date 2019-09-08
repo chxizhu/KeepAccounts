@@ -22,7 +22,7 @@ public class T_charts implements java.io.Serializable {
 	public String getCategory() {
 		return category;
 	}
-	public void setCategory(String category) {
+	public void setCategory() {
 		this.category = category;
 	}
 	public Double getMoney() {
