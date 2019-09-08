@@ -2,59 +2,60 @@ package controller.server;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+
+
+
+
 import model.TUser;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
+
+
+
 import unit.ReturnData;
-import business.dao.UserLoginDAO;
-import business.impl.UserLoginDAImpl;
 
 import com.alibaba.fastjson.JSON;
 
 @Controller
-@RequestMapping(value = "/Admin")
-public class LoginController {
-	/**
-	 * 登录
-	 * @author select
-	 *
-	 */
-	@RequestMapping(value = "AdminLogin")
-	public void getlogin(String userid,Integer pwd,
-			HttpServletRequest request, HttpServletResponse response,
-			Model model) throws IOException {
+@RequestMapping(value = "/sysadminusermanager")
+public class loginOutcontroller {
+	@RequestMapping(value = "/logoutsystem")
+	public void getGetSystemModelList(HttpServletRequest request,
+			HttpServletResponse response) throws IOException {
 		
-		UserLoginDAO ado = new UserLoginDAImpl();
-		TUser user = ado.UserLogin(userid, pwd);
+		HttpSession  session   =   request.getSession();    
+		TUser TUser = (model.TUser) session.getAttribute("user");
+		request.getSession().removeAttribute("user");
+		//	    注销用户，使session失效。
+	   request.getSession().invalidate();
+	   
 		// 回传json字符串
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("application/json");
 		PrintWriter out = response.getWriter();
 		ReturnData td = new ReturnData();
-		if (user != null) {
-			HttpSession session = request.getSession();
-			session.setAttribute("user", user);
-			
-			String username = user.getUname();
-			session.setAttribute("username", username);
+		if (TUser != null) {
 			td.code = ReturnData.SUCCESS;
-			td.msg = "查询成功";
-			td.data = null;
+			td.msg = "退出成功";
 		} else {
 			td.code = ReturnData.ERROR;
-			td.msg = "查询失败";
+			td.msg = "退出失败";
 		}
 		out.write(JSON.toJSONString(td));
+		System.out.println(JSON.toJSONString(td));
+		// {"code":10001,"msg":"执行成功","result1":"......."}
 		out.flush();
 		out.close();
 
 	}
-	
 }

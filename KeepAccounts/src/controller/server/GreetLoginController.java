@@ -12,8 +12,10 @@ import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.TBill;
+import model.TUser;
 import model.T_charts;
 import model.echartModel;
 
@@ -38,9 +40,12 @@ public class GreetLoginController {
 			HttpServletResponse response, Model model) throws IOException {
 
 		GreetLoginDAO adao = new GreetLoginDAOimpl();
+		
+		HttpSession  session   =   request.getSession(); 
+		TUser TUser = (model.TUser) session.getAttribute("user");
 
 		TBill tb = new TBill();
-		tb.setUserid("201901");
+		tb.setUserid(TUser.getUid());
 		tb.setOperation("支出");
 
 		List<T_charts> list = adao.selectincome(tb);
@@ -97,8 +102,11 @@ public class GreetLoginController {
 
 		GreetLoginDAO adao = new GreetLoginDAOimpl();
 
+		HttpSession  session   =   request.getSession(); 
+		TUser TUser = (model.TUser) session.getAttribute("user");
+
 		TBill tb = new TBill();
-		tb.setUserid("201901");
+		tb.setUserid(TUser.getUid());
 		tb.setOperation("收入");
 
 		ArrayList<T_charts> list = (ArrayList<T_charts>) adao.selectincome(tb);

@@ -34,12 +34,13 @@ public class AccountingDAOImpl implements AccountingDAO {
 	@Override
 	public List<VUserBill> getAccountListByCondition(String userid,String wherecondition,
 			int currentPage, int pageSize) {
+		/*System.out.print(userid);*/
 		String sql = " and uid = ? order by billtime desc";
 		Object[] para = {userid};
 		String hql = "from VUserBill";
 		if (wherecondition != null && !wherecondition.equals("")) {
 			hql += ( wherecondition + sql  ) ;
-			System.out.println(hql);
+			/*System.out.println(hql);*/
 		}
 		/*List<VUserBill> list = bado.selectByPage(hql,para, currentPage, pageSize);
 

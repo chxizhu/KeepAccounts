@@ -92,6 +92,7 @@ public class AccountingController {
 			HttpSession  session   =   request.getSession();    
 			TUser TUser = (model.TUser) session.getAttribute("user");//得到当前登录用户对象
 			userid = TUser.getUid();
+			
 			System.out.println("Controller的userid为：" + userid);
 			
 			AccountingDAO adao = new AccountingDAOImpl();
@@ -107,8 +108,8 @@ public class AccountingController {
 				exp.andAnd(endtime, String.class);
 			}
 
-			List<VUserBill> list = adao.getAccountListByCondition(TUser.getUid(),exp.toString(), page, limit);		
-			int num = adao.getAccountListByConditionAmount(TUser.getUid(),exp.toString());
+			List<VUserBill> list = adao.getAccountListByCondition(userid,exp.toString(), page, limit);		
+			int num = adao.getAccountListByConditionAmount(userid,exp.toString());
 			// 回传json字符串
 			response.setCharacterEncoding("utf-8");
 			response.setContentType("application/json");
