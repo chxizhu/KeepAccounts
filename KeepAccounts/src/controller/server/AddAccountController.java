@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,10 +32,10 @@ import com.alibaba.fastjson.JSON;
 public class AddAccountController {
 
 	//添加用户
-			@RequestMapping(value = "/addaccount")
+			@RequestMapping(value = "addaccount")
 			public void addAccount(
-					String userid, //用户ID
-					Timestamp billtime, //操作时间
+					/*String userid, //用户ID
+*/					Timestamp billtime, //操作时间
 					Double money, //钱
 					String category, //类别（衣服。。）
 					String operation, //操作类别
@@ -48,6 +49,7 @@ public class AddAccountController {
 				
 				HttpSession  session   =   request.getSession();    
 				TUser TUser = (model.TUser) session.getAttribute("user");
+				System.out.println(billtime);
 				
 				user.setUserid(TUser.getUid());
 				user.setBilltime(billtime);
