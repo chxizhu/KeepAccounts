@@ -108,8 +108,8 @@ public class AccountingController {
 				exp.andAnd(endtime, String.class);
 			}
 
-			List<VUserBill> list = adao.getAccountListByCondition(userid,exp.toString(), page, limit);		
-			int num = adao.getAccountListByConditionAmount(userid,exp.toString());
+			List<VUserBill> list = adao.getAccountListByCondition(TUser.getUid(),exp.toString(), page, limit);		
+			int num = adao.getAccountListByConditionAmount(TUser.getUid(),exp.toString());
 			// 回传json字符串
 			response.setCharacterEncoding("utf-8");
 			response.setContentType("application/json");

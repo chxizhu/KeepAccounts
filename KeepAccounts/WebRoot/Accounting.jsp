@@ -82,14 +82,14 @@
         					 <option value="支出" >支出</option>     							
 						</select>
 					</div>
-				
-				<div class="layui-inline"> 
-				  	<input type="text" class="layui-input" name="starttime" id="starttime" placeholder="开始时间"  placeholder="yyyy-MM-dd">
-				</div>
-				 
-				<div class="layui-inline"> 
-				  	<input type="text" class="layui-input" name="endtime" id="endtime" placeholder="结束时间"  placeholder="yyyy-MM-dd">
-				</div>
+											
+				 <div class="layui-input-inline">
+				            
+				        <input type="text" name="starttime" id="starttime" lay-verify="date" placeholder="开始时间" autocomplete="off" class="layui-input">
+				       </div>
+				       <div class="layui-input-inline">
+				        <input type="text" name="endtime" id="endtime" lay-verify="date" placeholder="结束时间" autocomplete="off" class="layui-input">
+				      </div>
 					
 				<div class="layui-inline">
 					<button class="layui-btn layui-bg-blue" id="queryBill" >查询</button>

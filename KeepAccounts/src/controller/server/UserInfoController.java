@@ -29,7 +29,8 @@ public class UserInfoController {
 	
 	//修改用户信息
 	@RequestMapping(value = "/userinfo")
-	public void modificationuserinfo(	
+	public void modificationuserinfo(
+			boolean userid,
 			String username,
 			int password,		
 			HttpServletRequest request,
@@ -44,7 +45,7 @@ public class UserInfoController {
 		
 		udao.modificationUserInfo(TUser.getUid(), username, password); //通过当前用户ID修改用户信息
 		
-		boolean userid = udao.modificationUserInfo(TUser.getUid(), username, password);//通过当前用户ID来判断是否修改成功
+		userid = udao.modificationUserInfo(TUser.getUid(), username, password);//通过当前用户ID来判断是否修改成功
 		
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("application/json");

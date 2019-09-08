@@ -25,11 +25,11 @@ public interface AccountingDAO {
 	
 	/**
 	 * 根据条件查询账单
-	 * @param userid当前登录用户ID
-	 * @param wherecondittion 条件
+	 * @param uid当前登录用户ID
+	 * @param wherecondittion 查询条件
 	 * @return list
 	 */
-	public List<VUserBill> getAccountListByCondition(String userid,String wherecondition,
+	public List<VUserBill> getAccountListByCondition(String uid,String wherecondition,
 			int currentPage, int pageSize);
 
 	/**

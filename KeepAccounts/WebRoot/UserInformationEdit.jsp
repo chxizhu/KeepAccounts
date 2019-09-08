@@ -99,9 +99,7 @@
 										    </div>
 										    <div class="layui-form-mid layui-word-aux">请再次输入密码</div>
 								</div>
-																
-								
-															
+																																						
 								<div class="layui-form-item">
 									<div class="layui-input-block">
 										<button class="layui-btn  layui-btn-normal" lay-submit="" lay-filter="demo1" id ="modification">确定修改</button>
