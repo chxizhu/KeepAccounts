@@ -44,11 +44,11 @@
     	
     	<div class="layui-row" style="margin-top: 20px;margin-left: 35%;">
     		 <div class="layui-input-inline" >
- 		<div font style="font-size: 15px;">总收入：<font style="font-size: 20px;" color= "lawngreen"> +500</font></div>		
+ 		<div font style="font-size: 15px;">总收入：<font style="font-size: 20px;" color= "lawngreen"> xxx</font></div>		
  		</div>
     	</div>
     	<div class="layui-row" style="margin-top: 20px;margin-left: 35%;">
-  		<div font style="font-size: 15px;">总支出：<font style="font-size: 20px;" color= "red"> - 200</font></div>
+  		<div font style="font-size: 15px;">总支出：<font style="font-size: 20px;" color= "red"> xxx</font></div>
     	</div>
     	
     	<div class="layui-container">  
