@@ -6,5 +6,11 @@
 * （3）添加记账面：分类对收入、支出进行添加。
 * （4）登录页面。
 * （5）注册页面。
+
 ## 相关界面
 ![image](https://raw.githubusercontent.com/chxizhu/KeepAccounts/master/images/%E5%9B%BE%E7%89%871.png)
+![image](https://raw.githubusercontent.com/chxizhu/KeepAccounts/master/images/%E5%9B%BE%E7%89%872.png)
+
+
+##鸣谢
+感谢小组成员以及老师、同学的帮助支持。
